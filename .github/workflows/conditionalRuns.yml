@@ -4,29 +4,29 @@ on:
   push: {}
 
 jobs:
-  name: Testing conditional env var
-  runs-on: ubuntu-latest
-  strategy:
-    fail-fast: false
-    matrix:
-      targetPlatform:
-        - iOS
-        - Android
-      unityVersion:
-        - 2018
-        - 2019
-  steps:
-    - uses: actions/checkout@v2
-    
-    - name: Download Android artifact
-      if: matrix.targetPlatform == "Android"
-      env:
-        KEY: ${{ format('build_{0}_Android', matrix.unityVersion) }}
-      runs: echo $KEY
+  ConditionalActions:
+    name: Testing ${{ matrix.targetPlatform }} in ${{ matrix.unityVersion }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - iOS
+          - Android
+        unityVersion:
+          - 2018
+          - 2019
+    steps:
+      - uses: actions/checkout@v2
       
-    - name: Download iOS Artifact
-      if: matrix.targetPlatform == 'iOS'
-      env:
-        KEY: ${{ format('iOS_unity_{0}.ipa', matrix.unityVersion) }}
-      runs: echo $KEY
-      
+      - name: Download Android artifact
+        if: matrix.targetPlatform == "Android"
+        env:
+          KEY: ${{ format('build_{0}_Android', matrix.unityVersion) }}
+        runs: echo $KEY
+        
+      - name: Download iOS Artifact
+        if: matrix.targetPlatform == 'iOS'
+        env:
+          KEY: ${{ format('iOS_unity_{0}.ipa', matrix.unityVersion) }}
+        runs: echo $KEY
