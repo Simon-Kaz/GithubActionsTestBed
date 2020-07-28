@@ -13,20 +13,23 @@ jobs:
         targetPlatform:
           - iOS
           - Android
-        unityVersion:
-          - "2018.4.21f1"
-          - "2019.3.12f1"
+        unityVersion: [2018, 2019]
+        include:
+          - unityVersion: 2018
+            fullVersion: 2018.4.21f1
+          - unityVersion: 2019
+            fullVersion: 2019.3.12f1
     steps:
       - uses: actions/checkout@v2
       
       - name: Download Android artifact
         if: matrix.targetPlatform == 'Android'
         env:
-          KEY: ${{ format('build_{0}_Android', matrix.unityVersion) }}
+          KEY: ${{ format('build_{0}_Android', matrix.fullVersion) }}
         run: echo $KEY
         
       - name: Download iOS Artifact
         if: matrix.targetPlatform == 'iOS'
         env:
-          KEY: ${{ format('iOS_unity_{0}.ipa', matrix.unityVersion) }}
+          KEY: ${{ format('iOS_unity_{0}.ipa', matrix.fullVersion) }}
         run: echo $KEY
