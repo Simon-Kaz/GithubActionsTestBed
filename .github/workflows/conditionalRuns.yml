@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Download Android artifact
-        if: matrix.targetPlatform == "Android"
+        if: matrix.targetPlatform == 'Android'
         env:
           KEY: ${{ format('build_{0}_Android', matrix.unityVersion) }}
         run: echo $KEY
