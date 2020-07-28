@@ -15,11 +15,13 @@ jobs:
       unityVersion:
         - 2018
         - 2019
+  steps:
+    - uses: actions/checkout@v2
+    
+    - name: Run echo 
       env:
         if: matrix.targetPlatform == 'iOS'
           ARTIFACT_NAME: ${{ format('iOS_unity_{0}', matrix.unityVersion) }}
         if: matrix.targetPlatform == 'Android'
           ARTIFACT_NAME: ${{ format('build_{0}_Android', matrix.unityVersion) }}
-  steps:
-    - uses: actions/checkout@v2
-    - run: echo $ARTIFACT_NAME
+      run: echo $ARTIFACT_NAME
