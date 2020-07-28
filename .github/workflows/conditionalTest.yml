@@ -18,10 +18,15 @@ jobs:
   steps:
     - uses: actions/checkout@v2
     
-    - name: Run echo 
+    - name: Download Android artifact
+      if: matrix.targetPlatform == "Android"
       env:
-        if: matrix.targetPlatform == 'iOS'
-          ARTIFACT_NAME: ${{ format('iOS_unity_{0}', matrix.unityVersion) }}
-        if: matrix.targetPlatform == 'Android'
-          ARTIFACT_NAME: ${{ format('build_{0}_Android', matrix.unityVersion) }}
-      run: echo $ARTIFACT_NAME
+        KEY: ${{ format('build_{0}_Android', matrix.unityVersion) }}
+      runs: echo $KEY
+      
+    - name: Download iOS Artifact
+      if: matrix.targetPlatform == 'iOS'
+      env:
+        KEY: ${{ format('iOS_unity_{0}.ipa', matrix.unityVersion) }}
+      runs: echo $KEY
+      
