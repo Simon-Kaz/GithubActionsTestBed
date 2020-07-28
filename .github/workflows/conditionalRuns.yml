@@ -14,8 +14,8 @@ jobs:
           - iOS
           - Android
         unityVersion:
-          - 2018
-          - 2019
+          - "2018.4.21f1"
+          - "2019.3.12f1"
     steps:
       - uses: actions/checkout@v2
       
