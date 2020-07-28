@@ -23,10 +23,10 @@ jobs:
         if: matrix.targetPlatform == "Android"
         env:
           KEY: ${{ format('build_{0}_Android', matrix.unityVersion) }}
-        runs: echo $KEY
+        run: echo $KEY
         
       - name: Download iOS Artifact
         if: matrix.targetPlatform == 'iOS'
         env:
           KEY: ${{ format('iOS_unity_{0}.ipa', matrix.unityVersion) }}
-        runs: echo $KEY
+        run: echo $KEY
