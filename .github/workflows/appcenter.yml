@@ -5,20 +5,10 @@ on:
 
 jobs:
   ConditionalActions:
-    name: Testing ${{ matrix.targetPlatform }} in ${{ matrix.unityVersion }}
+    name: AppCenter for ${{ matrix.targetPlatform }} in ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        targetPlatform:
-          - iOS
-          - Android
-        unityVersion: [2018, 2019]
-        include:
-          - unityVersion: 2018
-            fullVersion: 2018.4.21f1
-          - unityVersion: 2019
-            fullVersion: 2019.3.12f1
     env:
       APK_PATH: ${{ format('{0}/testApk.apk', github.workspace) }}
     steps:
