@@ -15,9 +15,7 @@ jobs:
       
       - name: Get current PR details
         env:
-          BRANCH_NAME: ${{ github.payload.pull_request.head.ref }}
           PR_NUMBER: ${{ github.event.pull_request.number }} 
           PR_TITLE: ${{ github.event.pull_request.title }}
-          COMMIT_SHA: ${{ github.event.pull_request.commit }}
-          RELEASE_NOTES: "[Build for PR: ${{ env.PR_TITLE }} #${{ env.PR_NUMBER }}, commit: ${{ env.COMMIT_SHA }}]"
+          RELEASE_NOTES: "[Build for PR: ${{ env.PR_TITLE }} #${{ env.PR_NUMBER }}, branch: ${GITHUB_REF#refs/heads/} commit: ${GITHUB_SHA}]"
         run: echo $RELEASE_NOTES
