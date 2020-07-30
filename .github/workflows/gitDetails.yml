@@ -20,5 +20,5 @@ jobs:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
-        chmod +x Scripts/appcenter.sh
-        ./Scripts/appcenter.sh
+          chmod +x Scripts/appcenter.sh
+          ./Scripts/appcenter.sh
