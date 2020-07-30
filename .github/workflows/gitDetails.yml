@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push: {}
+
+jobs:
+  ConditionalActions:
+    name: Testing ${{ matrix.targetPlatform }} in ${{ matrix.unityVersion }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Get current branch name
+        run: echo ${{ GITHUB_REF#refs/heads/ }}
