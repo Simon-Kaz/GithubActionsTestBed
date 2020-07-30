@@ -5,7 +5,7 @@ on:
 
 jobs:
   ConditionalActions:
-    name: AppCenter for ${{ matrix.targetPlatform }} in ${{ matrix.unityVersion }}
+    name: AppCenter
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
