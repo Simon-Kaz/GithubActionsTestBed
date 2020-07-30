@@ -5,7 +5,7 @@ on:
 
 jobs:
   ConditionalActions:
-    name: Testing ${{ matrix.targetPlatform }} in ${{ matrix.unityVersion }}
+    name: Getting git branch and other references
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -14,4 +14,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Get current branch name
-        run: echo ${{ GITHUB_REF#refs/heads/ }}
+        run: echo ${ GITHUB_REF#refs/heads/ }
+
+      - name: Get github PR number
+        run: echo ${{ github.event.number }}
