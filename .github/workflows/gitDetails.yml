@@ -18,3 +18,4 @@ jobs:
 
       - name: Get github PR number
         run: echo ${{ github.event.pull_request.number }}
+      - run: echo ${{ github.event.number }}
