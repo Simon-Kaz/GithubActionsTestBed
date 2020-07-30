@@ -19,4 +19,4 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }} 
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_URL: ${{ github.event.pull_request.html_url }}
-        run: echo "[Build for PR: $PR_NUMBER: $PR_TITLE Branch: $PR_BRANCH, commit: $GITHUB_SHA, url: $PR_URL]"
+        run: Scripts/appcenter.sh
