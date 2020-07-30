@@ -17,4 +17,4 @@ jobs:
         run: echo ${GITHUB_REF#refs/heads/}
 
       - name: Get github PR number
-        run: echo ${{ github.event.number }}
+        run: echo ${{ github.event.pull_request.number }}
