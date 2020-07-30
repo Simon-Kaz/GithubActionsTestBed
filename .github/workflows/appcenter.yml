@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  push: {}
+  pull_request: {}
 
 jobs:
   ConditionalActions:
@@ -11,10 +11,6 @@ jobs:
       fail-fast: false
     env:
       APK_PATH: ${{ format('{0}/testApk.apk', github.workspace) }}
-      PR_BRANCH: ${{ github.head_ref }}     
-      PR_NUMBER: ${{ github.event.pull_request.number }} 
-      PR_TITLE: ${{ github.event.pull_request.title }}
-      PR_URL: ${{ github.event.pull_request.html_url }}
     steps:
       - uses: actions/checkout@v2
       
@@ -29,6 +25,10 @@ jobs:
         env:
           APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_TOKEN }}
           FILE_PATH: ${{ env.APK_PATH }}
+          PR_BRANCH: ${{ github.head_ref }}     
+          PR_NUMBER: ${{ github.event.pull_request.number }} 
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
           chmod +x Scripts/appcenter.sh
           ./Scripts/appcenter.sh
