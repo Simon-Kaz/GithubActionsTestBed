@@ -13,10 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Get current branch name
-        run: echo ${GITHUB_REF#refs/heads/}
-
-      - name: Get github PR number
-        run: echo ${{ github.event.pull_request.number }}
-      - run: echo ${{ github.event.number }}
-      - run: echo ${{ github.event.pull_request.title }}
+      - name: Get current PR details
+      env:
+        BRANCH_NAME: ${GITHUB_REF#refs/heads/}
+        PR_NUMBER: ${{ github.event.pull_request.number }} 
+        PR_TITLE: ${{ github.event.pull_request.title }}
+        RELEASE_NOTES: "[Build for PR: $PR_TITLE #$PR_NUMBER]"
+      run: Release notes format test
+      - run: echo $RELEASE_NOTES
