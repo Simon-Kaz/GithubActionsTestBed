@@ -17,4 +17,4 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }} 
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: echo "[Build for PR: ${{ env.PR_TITLE }} ${{ env.PR_NUMBER }}, branch: ${GITHUB_REF#refs/heads/} commit: ${GITHUB_SHA}]"
+        run: echo "[Build for PR: ${{ env.PR_TITLE }} \#${{ env.PR_NUMBER }}, branch: ${GITHUB_REF#refs/heads/} commit: ${GITHUB_SHA}]"
