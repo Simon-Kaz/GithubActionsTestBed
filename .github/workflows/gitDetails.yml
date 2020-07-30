@@ -18,5 +18,5 @@ jobs:
           BRANCH_NAME: ${GITHUB_REF#refs/heads/}
           PR_NUMBER: ${{ github.event.pull_request.number }} 
           PR_TITLE: ${{ github.event.pull_request.title }}
-          RELEASE_NOTES: "[Build for PR: $PR_TITLE #$PR_NUMBER]"
+          RELEASE_NOTES: "[Build for PR: ${{ env.PR_TITLE }} #${{ env.PR_NUMBER }}]"
         run: echo $RELEASE_NOTES
