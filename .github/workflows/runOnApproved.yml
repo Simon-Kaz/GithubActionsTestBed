@@ -3,8 +3,8 @@ on:
     types: [APPROVED]
 jobs:
   printApprovedReview:
-  runs-on: ubuntu-latest
-  steps:
-  - run: |
-      echo "PR Approved"
-      echo "branch: ${{ github.head_ref }}"
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "PR Approved"
+        echo "branch: ${{ github.head_ref }}"
