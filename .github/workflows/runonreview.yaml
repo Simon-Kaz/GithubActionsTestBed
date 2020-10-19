@@ -1,0 +1,23 @@
+name: RunOnReadyForReviewAndApproval
+
+on:
+  pull_request:
+    types: [ready_for_review]
+jobs:
+  printReadyForReview:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "PR Ready For Review"
+        echo "branch: ${{ github.head_ref }}"
+
+on:
+  pull_request_review:
+    types: [APPROVED]
+  jobs:
+    printApprovedReview:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "PR Approved"
+        echo "branch: ${{ github.head_ref }}"
