@@ -1,6 +1,6 @@
 on:
   pull_request_review:
-    types: [APPROVED]
+    types: [APPROVE]
 jobs:
   printApprovedReview:
     runs-on: ubuntu-latest
