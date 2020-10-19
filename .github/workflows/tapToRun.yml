@@ -14,5 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
+        echo "Branch: ${{ github.event.inputs.branch }}"
         echo "Log level: ${{ github.event.inputs.logLevel }}"
         echo "Tags: ${{ github.event.inputs.tags }}"
