@@ -1,0 +1,10 @@
+on:
+  pull_request_review:
+    types: [APPROVE]
+jobs:
+  printApprovedReview:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "PR Approved"
+        echo "branch: ${{ github.head_ref }}"
