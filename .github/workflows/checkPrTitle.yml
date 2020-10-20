@@ -19,6 +19,7 @@ jobs:
           echo "PR review state: $REVIEW_STATE"
 
   printIfApproved:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     env:
       REVIEW_STATE: ${{ github.event.review.state }}
