@@ -1,10 +1,11 @@
 on:
   pull_request_review:
-    types: [APPROVE]
+    types: [submitted]
 jobs:
   printApprovedReview:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "PR Approved"
-        echo "branch: ${{ github.head_ref }}"
+      - run: |
+          echo "PR Approved"
+          echo "branch: ${{ github.head_ref }}"
