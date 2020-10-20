@@ -1,0 +1,16 @@
+on:
+  push
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+      PR_FROM_TRANSLATIONS: ${{ contains(github.event.pull_request.title, '[i18n]') }}
+      CHECK_NEGATIVE: ${{ !contains(github.event.pull_request.title, '[i18n]') }}
+    steps:
+      - run: |
+          echo "PR Approved and not by dependabot or translations PR"
+          echo "branch: ${{ github.head_ref }}"
+          echo "context: $GITHUB_CONTEXT"
+          echo "is it from translations?: $PR_FROM_TRANSLATIONS"
+          echo "negative available?: $CHECK_NEGATIVE"
