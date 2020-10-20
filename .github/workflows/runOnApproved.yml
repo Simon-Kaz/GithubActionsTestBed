@@ -3,7 +3,8 @@ on:
     types: [submitted]
 jobs:
   printApprovedReview:
-    if: github.event.review.state == 'approved'
+    #Check if a PR was approved, and is not from i18n or Dependabot
+    if: github.event.review.state == 'approved' && !contains(github.event.pull_request.title, '[i18n]') && github.event.pull_request != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - run: |

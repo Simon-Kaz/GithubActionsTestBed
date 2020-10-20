@@ -8,11 +8,21 @@ jobs:
       PR_FROM_TRANSLATIONS: ${{ contains(github.event.pull_request.title, '[i18n]') }}
       CHECK_NEGATIVE: ${{ !contains(github.event.pull_request.title, '[i18n]') }}
       PR_CREATOR: ${{ github.actor }}
+      REVIEW_STATE: ${{ github.event.review.state }}
     steps:
       - run: |
-          echo "PR Approved and not by dependabot or translations PR"
           echo "branch: ${{ github.head_ref }}"
           echo "context: $GITHUB_CONTEXT"
           echo "is it from translations?: $PR_FROM_TRANSLATIONS"
           echo "negative available?: $CHECK_NEGATIVE"
           echo "pr created by: $PR_CREATOR"
+          echo "PR review state: $REVIEW_STATE"
+
+  printIfApproved:
+    runs-on: ubuntu-latest
+    env:
+      REVIEW_STATE: ${{ github.event.review.state }}
+    steps:
+      - run: |
+          echo "PR Approved!"
+          echo "PR review state: $REVIEW_STATE"
