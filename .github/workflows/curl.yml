@@ -1,0 +1,11 @@
+on:
+  push: {}
+jobs:
+  runCurl:
+    runs-on: ubuntu-latest
+    env: 
+      ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }} 
+      ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }} 
+    steps:
+      - run: |
+        curl https://www.google.com
