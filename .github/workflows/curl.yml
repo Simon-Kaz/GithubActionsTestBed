@@ -8,4 +8,4 @@ jobs:
       ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }} 
     steps:
       - run: |
-        curl https://www.google.com
+          curl https://www.google.com
